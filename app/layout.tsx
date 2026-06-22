@@ -31,6 +31,9 @@ export default function RootLayout({
       className={`${fraunces.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-forest-800 text-earth-100">
+        <a href="#main-content" className="skip-link">
+          Lewati navigasi
+        </a>
         <Navbar />
         {children}
       </body>

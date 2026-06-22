@@ -144,3 +144,9 @@ export const visitorGuidelines = [
   "Jaga jarak dari gajah, jangan memaksa kontak, dan ikuti arahan mahout.",
   "Bawa pulang sampah, kurangi plastik sekali pakai, dan hormati ruang warga.",
 ] as const;
+
+export const contentSources = [
+  "PRD internal project: riset awal Tangkahan, CRU, dan dampak ekonomi.",
+  "Gunung Leuser National Park public references: konteks ekowisata Tangkahan dan ancaman illegal logging di kawasan Leuser.",
+  "Catatan final: angka pengunjung dan estimasi ekonomi harus diverifikasi ulang ke sumber primer sebelum publikasi lomba.",
+] as const;

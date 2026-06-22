@@ -49,6 +49,7 @@ export default function StillLearning() {
 
   return (
     <section
+      id="kejujuran"
       ref={sectionRef}
       className="bg-[var(--color-earth-900)] px-5 py-24 text-[var(--color-earth-100)] lg:py-40"
       data-navbar-theme="dark"

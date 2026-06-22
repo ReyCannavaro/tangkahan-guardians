@@ -1,3 +1,5 @@
+import { contentSources } from "@/lib/content";
+
 export default function Footer() {
   return (
     <footer
@@ -27,6 +29,19 @@ export default function Footer() {
             Website ini tidak menggunakan database, LocalStorage, atau
             SessionStorage.
           </p>
+        </div>
+
+        <div className="lg:col-span-2">
+          <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-neutral-200)]">
+            Catatan sumber
+          </p>
+          <ul className="grid gap-2 font-sans text-sm leading-relaxed lg:grid-cols-3">
+            {contentSources.map((source) => (
+              <li key={source} className="rounded-2xl border border-white/10 p-4">
+                {source}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap-config";
-import { List } from "@phosphor-icons/react";
+import { List, X } from "@phosphor-icons/react";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -14,9 +14,13 @@ export default function Navbar() {
     href: string
   ) => {
     event.preventDefault();
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const behavior: ScrollBehavior = prefersReducedMotion ? "auto" : "smooth";
 
     if (href === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior });
       setIsOpen(false);
       return;
     }
@@ -30,8 +34,10 @@ export default function Navbar() {
 
     window.scrollTo({
       top: Math.max(targetTop, 0),
-      behavior: "smooth",
+      behavior,
     });
+
+    window.history.replaceState(null, "", href);
     setIsOpen(false);
   };
 
@@ -170,6 +176,13 @@ export default function Navbar() {
           >
             Dampak
           </Link>
+          <Link
+            href="#kejujuran"
+            className="text-sm font-medium tracking-wide"
+            onClick={(event) => scrollToSection(event, "#kejujuran")}
+          >
+            Kejujuran
+          </Link>
           <Link 
             href="#kunjungi" 
             className="px-6 py-2.5 rounded-full bg-[var(--color-amber-500)] text-[var(--color-forest-950)] text-sm font-semibold transition-all hover:bg-[var(--color-amber-400)] hover:scale-105"
@@ -181,15 +194,29 @@ export default function Navbar() {
 
         {/* Mobile Nav */}
         <div className="lg:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
-            <List size={28} weight="thin" color="currentColor" />
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Tutup menu" : "Buka menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav-menu"
+            className="rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-current"
+          >
+            {isOpen ? (
+              <X size={28} weight="thin" color="currentColor" />
+            ) : (
+              <List size={28} weight="thin" color="currentColor" />
+            )}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 top-[80px] bg-black/50 backdrop-blur-md z-40 p-5 flex flex-col space-y-6 lg:hidden border-t border-white/10 rounded-2xl mx-4">
+        <div
+          id="mobile-nav-menu"
+          className="fixed inset-x-4 top-[88px] z-40 flex flex-col space-y-6 rounded-3xl border border-white/10 bg-[rgba(13,31,22,0.82)] p-6 shadow-2xl backdrop-blur-md lg:hidden"
+        >
           <Link
             href="#kisah"
             className="text-lg font-medium text-earth-100"
@@ -210,6 +237,20 @@ export default function Navbar() {
             onClick={(event) => scrollToSection(event, "#dampak")}
           >
             Dampak
+          </Link>
+          <Link
+            href="#kejujuran"
+            className="text-lg font-medium text-earth-100"
+            onClick={(event) => scrollToSection(event, "#kejujuran")}
+          >
+            Kejujuran
+          </Link>
+          <Link
+            href="#kunjungi"
+            className="rounded-full bg-[var(--color-amber-500)] px-5 py-3 text-center text-base font-semibold text-[var(--color-forest-950)]"
+            onClick={(event) => scrollToSection(event, "#kunjungi")}
+          >
+            Mulai Perjalanan
           </Link>
         </div>
       )}
