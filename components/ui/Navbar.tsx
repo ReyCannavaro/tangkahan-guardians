@@ -9,6 +9,32 @@ export default function Navbar() {
   const navbarRef = useRef<HTMLElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollToSection = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    event.preventDefault();
+
+    if (href === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setIsOpen(false);
+      return;
+    }
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    const navbarOffset = navbarRef.current?.offsetHeight ?? 72;
+    const targetTop =
+      target.getBoundingClientRect().top + window.scrollY - navbarOffset - 16;
+
+    window.scrollTo({
+      top: Math.max(targetTop, 0),
+      behavior: "smooth",
+    });
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     if (!navbarRef.current) return;
     const triggers: ScrollTrigger[] = [];
@@ -113,18 +139,41 @@ export default function Navbar() {
       style={{ height: "72px" }}
     >
       <div className="flex w-full items-center justify-between mx-auto">
-        <Link href="/" className="font-display font-bold text-xl tracking-wide">
+        <Link
+          href="/"
+          className="font-display font-bold text-xl tracking-wide"
+          onClick={(event) => scrollToSection(event, "/")}
+        >
           TANGKAHAN
         </Link>
         
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center space-x-8">
-          <Link href="#kisah" className="text-sm font-medium tracking-wide">Kisah Kami</Link>
-          <Link href="#konservasi" className="text-sm font-medium tracking-wide">Konservasi</Link>
-          <Link href="#dampak" className="text-sm font-medium tracking-wide">Dampak</Link>
+          <Link
+            href="#kisah"
+            className="text-sm font-medium tracking-wide"
+            onClick={(event) => scrollToSection(event, "#kisah")}
+          >
+            Kisah Kami
+          </Link>
+          <Link
+            href="#konservasi"
+            className="text-sm font-medium tracking-wide"
+            onClick={(event) => scrollToSection(event, "#konservasi")}
+          >
+            Konservasi
+          </Link>
+          <Link
+            href="#dampak"
+            className="text-sm font-medium tracking-wide"
+            onClick={(event) => scrollToSection(event, "#dampak")}
+          >
+            Dampak
+          </Link>
           <Link 
             href="#kunjungi" 
             className="px-6 py-2.5 rounded-full bg-[var(--color-amber-500)] text-[var(--color-forest-950)] text-sm font-semibold transition-all hover:bg-[var(--color-amber-400)] hover:scale-105"
+            onClick={(event) => scrollToSection(event, "#kunjungi")}
           >
             Mulai Perjalanan
           </Link>
@@ -141,9 +190,27 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="fixed inset-0 top-[80px] bg-black/50 backdrop-blur-md z-40 p-5 flex flex-col space-y-6 lg:hidden border-t border-white/10 rounded-2xl mx-4">
-          <Link href="#kisah" className="text-lg font-medium text-earth-100" onClick={() => setIsOpen(false)}>Kisah Kami</Link>
-          <Link href="#konservasi" className="text-lg font-medium text-earth-100" onClick={() => setIsOpen(false)}>Konservasi</Link>
-          <Link href="#dampak" className="text-lg font-medium text-earth-100" onClick={() => setIsOpen(false)}>Dampak</Link>
+          <Link
+            href="#kisah"
+            className="text-lg font-medium text-earth-100"
+            onClick={(event) => scrollToSection(event, "#kisah")}
+          >
+            Kisah Kami
+          </Link>
+          <Link
+            href="#konservasi"
+            className="text-lg font-medium text-earth-100"
+            onClick={(event) => scrollToSection(event, "#konservasi")}
+          >
+            Konservasi
+          </Link>
+          <Link
+            href="#dampak"
+            className="text-lg font-medium text-earth-100"
+            onClick={(event) => scrollToSection(event, "#dampak")}
+          >
+            Dampak
+          </Link>
         </div>
       )}
     </nav>
