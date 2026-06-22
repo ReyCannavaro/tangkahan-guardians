@@ -1,16 +1,9 @@
+import Hero from "@/components/sections/Hero";
+
 export default function Home() {
   return (
     <main>
-      {/* Hero */}
-      <section 
-        className="min-h-[120vh] pt-32 pb-24 px-5 flex flex-col items-center justify-center bg-[var(--color-forest-800)]"
-        data-navbar-theme="dark"
-        data-navbar-bg="rgba(13, 31, 22, 0.55)"
-        data-navbar-color="var(--color-earth-100)"
-      >
-        <h1 className="font-display text-5xl lg:text-7xl mb-6">Hero Section</h1>
-        <p>Scroll ke bawah untuk melihat transisi warna navbar.</p>
-      </section>
+      <Hero />
 
       {/* The Wound */}
       <section 
