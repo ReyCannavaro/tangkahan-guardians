@@ -1,30 +1,13 @@
 import Hero from "@/components/sections/Hero";
+import TheWound from "@/components/sections/TheWound";
+import TheTurn from "@/components/sections/TheTurn";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-
-      {/* The Wound */}
-      <section 
-        className="min-h-screen py-24 lg:py-40 px-5 flex flex-col items-center justify-center bg-[var(--color-forest-950)]"
-        data-navbar-theme="dark"
-        data-navbar-bg="rgba(8, 18, 13, 0.6)"
-        data-navbar-color="var(--color-neutral-200)"
-      >
-        <h2 className="font-display text-4xl lg:text-5xl mb-6 text-[var(--color-neutral-200)]">The Wound</h2>
-      </section>
-
-      {/* The Turn */}
-      <section 
-        className="min-h-[150vh] py-32 lg:py-48 px-5 flex flex-col items-center justify-center"
-        style={{ background: "linear-gradient(to bottom, var(--color-forest-950), var(--color-sunset-600))" }}
-        data-navbar-theme="dark"
-        data-navbar-bg="rgba(90, 45, 20, 0.5)"
-        data-navbar-color="var(--color-earth-100)"
-      >
-        <h2 className="font-display text-4xl lg:text-5xl mb-6 text-[var(--color-earth-100)]">The Turn</h2>
-      </section>
+      <TheWound />
+      <TheTurn />
 
       {/* CRU System */}
       <section 
