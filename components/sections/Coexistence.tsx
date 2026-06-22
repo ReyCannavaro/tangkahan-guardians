@@ -2,21 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap-config";
-
-const pillars = [
-  {
-    label: "Gajah",
-    copy: "Kekuatan dan memori hutan yang membantu membuka jalur patroli tanpa memutus hubungan liar ekosistemnya.",
-  },
-  {
-    label: "Mahout",
-    copy: "Penjaga harian yang membaca bahasa tubuh gajah, arah angin, dan tanda kecil yang sering luput dari mata pengunjung.",
-  },
-  {
-    label: "Hutan",
-    copy: "Rumah bersama yang memberi air, pangan, perlindungan, dan alasan bagi masyarakat untuk terus menjaga.",
-  },
-];
+import { coexistencePillars } from "@/lib/content";
+import {
+  CanopyIcon,
+  ElephantIcon,
+  PatrolIcon,
+} from "@/components/illustrations/icons/LineIcons";
 
 export default function Coexistence() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -98,6 +89,9 @@ export default function Coexistence() {
           <div className="absolute left-1/2 top-[18%] h-28 w-28 -translate-x-1/2 rounded-full border border-[rgba(232,228,217,0.28)] bg-[rgba(232,228,217,0.12)] backdrop-blur-sm" />
           <div className="absolute bottom-[18%] left-[18%] h-32 w-20 rounded-t-full border border-[rgba(232,228,217,0.26)] bg-[rgba(232,228,217,0.16)]" />
           <div className="absolute bottom-[18%] right-[16%] h-40 w-28 rounded-t-[4rem] border border-[rgba(232,228,217,0.26)] bg-[rgba(232,228,217,0.12)]" />
+          <ElephantIcon className="absolute left-[15%] top-[28%] h-20 w-20 text-[rgba(232,228,217,0.35)]" />
+          <PatrolIcon className="absolute right-[18%] top-[42%] h-16 w-16 text-[rgba(232,228,217,0.28)]" />
+          <CanopyIcon className="absolute left-[35%] top-[58%] h-16 w-16 text-[rgba(232,228,217,0.24)]" />
           <div className="absolute bottom-0 left-0 right-0 h-36 bg-[linear-gradient(to_top,rgba(13,31,22,0.92),transparent)]" />
           <div className="absolute bottom-8 left-8 right-8">
             <p className="font-sans text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-amber-400)]">
@@ -128,7 +122,7 @@ export default function Coexistence() {
         ref={pillarsRef}
         className="mx-auto mt-16 grid max-w-6xl gap-px overflow-hidden rounded-lg border border-[rgba(61,46,31,0.16)] bg-[rgba(61,46,31,0.16)] lg:grid-cols-3"
       >
-        {pillars.map((pillar) => (
+        {coexistencePillars.map((pillar) => (
           <article
             key={pillar.label}
             className="bg-[var(--color-earth-100)] p-7 lg:p-8"

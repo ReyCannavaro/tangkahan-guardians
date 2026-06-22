@@ -11,6 +11,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (!navbarRef.current) return;
+    const triggers: ScrollTrigger[] = [];
 
     // Set initial transparent state
     gsap.set(navbarRef.current, {
@@ -22,7 +23,7 @@ export default function Navbar() {
     });
 
     // 1. Trigger for size and initial transparency vs blur
-    ScrollTrigger.create({
+    triggers.push(ScrollTrigger.create({
       start: "top -20px", // When scrolled down 20px
       end: 99999,
       onToggle: (self) => {
@@ -41,9 +42,9 @@ export default function Navbar() {
           });
         }
       }
-    });
+    }));
 
-    ScrollTrigger.create({
+    triggers.push(ScrollTrigger.create({
       start: "top -80px", // When scrolled down 80px, make it smaller
       end: 99999,
       onToggle: (self) => {
@@ -64,19 +65,19 @@ export default function Navbar() {
           }
         }
       }
-    });
+    }));
 
     // 2. Trigger for dynamic colors based on section themes
-    const sections = document.querySelectorAll("section[data-navbar-theme]");
+    const sections = document.querySelectorAll("section[data-navbar-theme], footer[data-navbar-theme]");
     
     sections.forEach((section) => {
-      ScrollTrigger.create({
+      triggers.push(ScrollTrigger.create({
         trigger: section,
         start: "top 72px", // When section hits the bottom of the navbar
         end: "bottom 72px",
         onEnter: () => applyTheme(section),
         onEnterBack: () => applyTheme(section),
-      });
+      }));
     });
 
     function applyTheme(section: Element) {
@@ -101,7 +102,7 @@ export default function Navbar() {
     }
     
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      triggers.forEach((trigger) => trigger.kill());
     };
   }, []);
 

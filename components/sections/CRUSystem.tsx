@@ -1,36 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import {
-  Binoculars,
-  ChalkboardTeacher,
-  ShieldCheck,
-} from "@phosphor-icons/react";
 import { gsap, ScrollTrigger } from "@/lib/gsap-config";
-
-const cruCards = [
-  {
-    title: "Patroli Gajah Terpadu",
-    eyebrow: "01 / CRU Patrol",
-    description:
-      "Mahout dan gajah Sumatra bergerak menyusuri batas hutan, membaca jejak, dan menjaga koridor satwa tetap aman dari konflik.",
-    Icon: Binoculars,
-  },
-  {
-    title: "Edukasi Konservasi",
-    eyebrow: "02 / Community",
-    description:
-      "CRU menjadi ruang belajar hidup bagi warga dan pengunjung tentang perilaku gajah, restorasi hutan, dan etika berada di Leuser.",
-    Icon: ChalkboardTeacher,
-  },
-  {
-    title: "Patroli Anti-Pembalakan Liar",
-    eyebrow: "03 / Forest Guard",
-    description:
-      "Jalur lama pembalakan kini diawasi bersama. Setiap patroli mempersempit ruang perusakan dan memperkuat rasa kepemilikan warga.",
-    Icon: ShieldCheck,
-  },
-];
+import { cruCards } from "@/lib/content";
+import CRUPatrolSimulator from "@/components/interactive/CRUPatrolSimulator";
+import {
+  CanopyIcon,
+  FootprintIcon,
+  PatrolIcon,
+} from "@/components/illustrations/icons/LineIcons";
 
 export default function CRUSystem() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -89,10 +67,17 @@ export default function CRUSystem() {
     return () => ctx.revert();
   }, []);
 
+  const getIcon = (icon: (typeof cruCards)[number]["icon"]) => {
+    if (icon === "canopy") return CanopyIcon;
+    if (icon === "patrol") return PatrolIcon;
+    return FootprintIcon;
+  };
+
   return (
     <section
+      id="konservasi"
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[var(--color-forest-700)] py-24 text-[var(--color-earth-100)] lg:min-h-screen lg:py-0"
+      className="relative w-full overflow-hidden bg-[var(--color-forest-700)] py-24 text-[var(--color-earth-100)] lg:py-0"
       data-navbar-theme="dark"
       data-navbar-bg="rgba(27, 58, 43, 0.55)"
       data-navbar-color="var(--color-earth-100)"
@@ -127,33 +112,52 @@ export default function CRUSystem() {
             ref={trackRef}
             className="flex w-max flex-col gap-5 px-5 lg:flex-row lg:gap-8 lg:px-[max(3rem,calc((100vw-72rem)/2))] lg:pr-[35vw]"
           >
-            {cruCards.map(({ title, eyebrow, description, Icon }) => (
-              <article
-                key={title}
-                className="group relative flex min-h-[360px] w-[calc(100vw-2.5rem)] max-w-[430px] flex-col justify-between overflow-hidden rounded-lg border border-[rgba(232,228,217,0.22)] bg-[rgba(232,228,217,0.08)] p-7 shadow-2xl shadow-[rgba(13,31,22,0.24)] backdrop-blur-md lg:h-[440px] lg:w-[430px] lg:p-8"
-              >
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,228,217,0.55)] to-transparent" />
-                <div>
-                  <Icon
-                    size={44}
-                    weight="thin"
-                    className="mb-10 text-[var(--color-amber-400)] transition-transform duration-500 group-hover:scale-110"
-                    aria-hidden="true"
-                  />
-                  <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-neutral-200)]">
-                    {eyebrow}
+            {cruCards.map(({ title, eyebrow, description, icon }) => {
+              const Icon = getIcon(icon);
+
+              return (
+                <article
+                  key={title}
+                  className="group relative flex min-h-[360px] w-[calc(100vw-2.5rem)] max-w-[430px] flex-col justify-between overflow-hidden rounded-3xl border border-[rgba(232,228,217,0.22)] bg-[rgba(232,228,217,0.08)] p-7 shadow-2xl shadow-[rgba(13,31,22,0.24)] backdrop-blur-md lg:h-[440px] lg:w-[430px] lg:p-8"
+                >
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(232,228,217,0.55)] to-transparent" />
+                  <div>
+                    <Icon
+                      size={44}
+                      className="mb-10 text-[var(--color-amber-400)] transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-neutral-200)]">
+                      {eyebrow}
+                    </p>
+                    <h3 className="font-display text-3xl leading-tight text-[var(--color-earth-100)]">
+                      {title}
+                    </h3>
+                  </div>
+                  <p className="mt-10 font-sans text-base leading-relaxed text-[var(--color-neutral-200)]">
+                    {description}
                   </p>
-                  <h3 className="font-display text-3xl leading-tight text-[var(--color-earth-100)]">
-                    {title}
-                  </h3>
-                </div>
-                <p className="mt-10 font-sans text-base leading-relaxed text-[var(--color-neutral-200)]">
-                  {description}
-                </p>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </div>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-5 pb-24 lg:px-12 lg:pb-40">
+        <div className="mb-8 max-w-3xl">
+          <p className="mb-4 font-sans text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-amber-400)]">
+            CRU Patrol Simulator
+          </p>
+          <h3 className="font-display text-3xl leading-tight lg:text-4xl">
+            Coba ambil keputusan seperti tim patroli.
+          </h3>
+          <p className="mt-5 font-sans text-lg leading-relaxed text-[var(--color-neutral-200)]">
+            Setiap skenario memperlihatkan pilihan yang tidak pernah sepenuhnya
+            hitam-putih: keselamatan, bukti, kesejahteraan satwa, dan ekonomi
+            warga harus ditimbang bersamaan.
+          </p>
+        </div>
+        <CRUPatrolSimulator />
       </div>
     </section>
   );
