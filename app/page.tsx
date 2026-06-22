@@ -1,6 +1,8 @@
 import Hero from "@/components/sections/Hero";
 import TheWound from "@/components/sections/TheWound";
 import TheTurn from "@/components/sections/TheTurn";
+import CRUSystem from "@/components/sections/CRUSystem";
+import Coexistence from "@/components/sections/Coexistence";
 
 export default function Home() {
   return (
@@ -8,26 +10,8 @@ export default function Home() {
       <Hero />
       <TheWound />
       <TheTurn />
-
-      {/* CRU System */}
-      <section 
-        className="min-h-screen py-24 lg:py-40 px-5 flex flex-col items-center justify-center bg-[var(--color-forest-700)]"
-        data-navbar-theme="dark"
-        data-navbar-bg="rgba(27, 58, 43, 0.55)"
-        data-navbar-color="var(--color-earth-100)"
-      >
-        <h2 className="font-display text-4xl lg:text-5xl mb-6 text-[var(--color-earth-100)]">CRU System</h2>
-      </section>
-
-      {/* Coexistence */}
-      <section 
-        className="min-h-screen py-24 lg:py-40 px-5 flex flex-col items-center justify-center bg-[var(--color-earth-100)] text-[var(--color-neutral-900)]"
-        data-navbar-theme="light"
-        data-navbar-bg="rgba(232, 228, 217, 0.65)"
-        data-navbar-color="var(--color-neutral-900)"
-      >
-        <h2 className="font-display text-4xl lg:text-5xl mb-6">Coexistence</h2>
-      </section>
+      <CRUSystem />
+      <Coexistence />
 
       {/* Impact Stats */}
       <section 
