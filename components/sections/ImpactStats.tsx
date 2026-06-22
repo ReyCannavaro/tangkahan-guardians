@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { impactStats } from "@/lib/content";
+import { impactPrinciples, impactStats } from "@/lib/content";
 import ImpactCounter from "@/components/interactive/ImpactCounter";
 import { gsap } from "@/lib/gsap-config";
 
@@ -77,6 +77,22 @@ export default function ImpactStats() {
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-8 rounded-3xl border border-[rgba(26,24,20,0.08)] bg-[rgba(42,74,53,0.06)] p-6 lg:p-8">
+          <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-earth-700)]">
+            Cara membaca data
+          </p>
+          <div className="grid gap-4 lg:grid-cols-3">
+            {impactPrinciples.map((principle) => (
+              <p
+                key={principle}
+                className="font-sans text-sm leading-relaxed text-[var(--color-neutral-600)]"
+              >
+                {principle}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </section>

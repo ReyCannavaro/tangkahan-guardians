@@ -16,6 +16,9 @@ type Scenario = (typeof cruScenarios)[number];
 export default function CRUPatrolSimulator() {
   const [activeScenario, setActiveScenario] = useState<Scenario>(cruScenarios[0]);
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
+  const [visitedScenarioIds, setVisitedScenarioIds] = useState<string[]>([
+    cruScenarios[0].id,
+  ]);
   const panelRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
 
@@ -77,7 +80,12 @@ export default function CRUPatrolSimulator() {
   const handleScenarioSelect = (scenario: Scenario) => {
     setActiveScenario(scenario);
     setSelectedChoice(null);
+    setVisitedScenarioIds((current) =>
+      current.includes(scenario.id) ? current : [...current, scenario.id]
+    );
   };
+
+  const isComplete = visitedScenarioIds.length === cruScenarios.length;
 
   return (
     <div className="grid gap-5 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch">
@@ -86,6 +94,10 @@ export default function CRUPatrolSimulator() {
         className="relative aspect-square overflow-hidden rounded-3xl border border-[rgba(232,228,217,0.16)] bg-[var(--color-forest-800)] p-5 shadow-2xl shadow-[rgba(13,31,22,0.22)] lg:aspect-[4/3]"
         aria-label="Peta simulasi patroli CRU"
       >
+        <div className="absolute left-5 top-5 z-10 rounded-full border border-[rgba(232,228,217,0.18)] bg-[rgba(13,31,22,0.42)] px-4 py-2 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-neutral-200)] backdrop-blur-sm">
+          {visitedScenarioIds.length}/{cruScenarios.length} skenario dibaca
+        </div>
+
         <div className="absolute inset-0 opacity-70">
           <div className="absolute left-[8%] top-[12%] h-28 w-28 rounded-full border border-[rgba(232,228,217,0.16)]" />
           <div className="absolute right-[12%] top-[14%] h-36 w-36 rounded-full border border-[rgba(232,228,217,0.12)]" />
@@ -121,6 +133,9 @@ export default function CRUPatrolSimulator() {
               onClick={() => handleScenarioSelect(scenario)}
             >
               <span className="cru-hotspot-pulse absolute inset-1 rounded-full bg-[rgba(217,164,65,0.16)]" />
+              {visitedScenarioIds.includes(scenario.id) && (
+                <span className="absolute -right-1 -top-1 h-4 w-4 rounded-full border border-[var(--color-forest-800)] bg-[var(--color-amber-400)]" />
+              )}
               <span className="relative flex h-full w-full items-center justify-center">
                 {index === 0 ? (
                   <FootprintIcon size={24} />
@@ -193,6 +208,19 @@ export default function CRUPatrolSimulator() {
             </>
           )}
         </div>
+
+        {isComplete && (
+          <div className="mt-5 rounded-2xl border border-[rgba(229,188,108,0.34)] bg-[rgba(217,164,65,0.1)] p-5">
+            <p className="mb-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-amber-400)]">
+              Ringkasan patroli
+            </p>
+            <p className="font-sans text-sm leading-relaxed text-[var(--color-neutral-200)]">
+              CRU bekerja bukan dengan satu keputusan heroik, tetapi dengan
+              rangkaian keputusan kecil: mengurangi risiko, membaca konteks,
+              menjaga bukti, dan tetap memberi ruang bagi warga serta satwa.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap-config";
-import { coexistencePillars } from "@/lib/content";
+import { coexistencePillars, communityOutcomes } from "@/lib/content";
 import {
   CanopyIcon,
   ElephantIcon,
@@ -115,6 +115,16 @@ export default function Coexistence() {
             mengenal gajahnya, masyarakat mengenal hutannya, dan setiap
             perjalanan mengajarkan batas yang harus dihormati.
           </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {communityOutcomes.map((outcome) => (
+              <span
+                key={outcome}
+                className="rounded-full border border-[rgba(61,46,31,0.16)] bg-[rgba(42,74,53,0.06)] px-4 py-2 font-sans text-sm font-semibold text-[var(--color-forest-800)]"
+              >
+                {outcome}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 

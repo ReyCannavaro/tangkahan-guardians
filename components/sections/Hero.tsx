@@ -6,6 +6,7 @@ import Link from "next/link";
 import HeroCanopy from "@/components/illustrations/HeroCanopy";
 import HeroTrees from "@/components/illustrations/HeroTrees";
 import HeroBushes from "@/components/illustrations/HeroBushes";
+import { heroSignals } from "@/lib/content";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -102,6 +103,16 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-30 flex flex-col items-center text-center px-5 max-w-4xl mx-auto mt-[-5vh]">
+        <div className="mb-6 flex flex-wrap justify-center gap-2">
+          {heroSignals.map((signal) => (
+            <span
+              key={signal}
+              className="rounded-full border border-[rgba(232,228,217,0.22)] bg-[rgba(13,31,22,0.26)] px-4 py-2 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-neutral-200)] backdrop-blur-sm"
+            >
+              {signal}
+            </span>
+          ))}
+        </div>
         <h1 
           ref={headlineRef}
           className="font-display font-bold text-5xl lg:text-6xl leading-tight mb-6 text-[var(--color-earth-100)]"
@@ -121,6 +132,15 @@ export default function Hero() {
         >
           Mulai Perjalanan
         </Link>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 z-30 hidden -translate-x-1/2 flex-col items-center gap-3 text-[var(--color-neutral-200)] md:flex">
+        <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em]">
+          Scroll untuk membaca perubahan
+        </span>
+        <span className="h-12 w-px overflow-hidden bg-[rgba(232,228,217,0.24)]">
+          <span className="block h-5 w-px animate-pulse bg-[var(--color-amber-400)]" />
+        </span>
       </div>
 
       {/* Grain overlay for the entire hero to add texture as required by DESIGN.md */}

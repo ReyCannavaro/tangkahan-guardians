@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap-config";
 import Stump from "@/components/illustrations/Stump";
+import { SawIcon } from "@/components/illustrations/icons/LineIcons";
 
 export default function TheWound() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -63,6 +64,9 @@ export default function TheWound() {
       </div>
 
       <div ref={textRef} className="relative z-10 max-w-3xl mx-auto text-center">
+        <div className="mx-auto mb-7 flex h-16 w-16 items-center justify-center rounded-full border border-[rgba(224,222,213,0.18)] bg-[rgba(224,222,213,0.05)] text-[var(--color-neutral-200)]">
+          <SawIcon size={32} />
+        </div>
         <h2 className="font-display text-4xl lg:text-5xl mb-8 text-[var(--color-neutral-200)] leading-tight">
           Dulu, Gergaji Mesin<br/>Menghancurkan Segalanya.
         </h2>
@@ -72,6 +76,17 @@ export default function TheWound() {
         <p className="font-sans text-lg lg:text-xl text-[var(--color-neutral-400)] leading-relaxed">
           Masyarakat lokal, yang terdesak oleh kemiskinan, terpaksa menebang hutan yang justru menjadi paru-paru mereka sendiri.
         </p>
+
+        <div className="mx-auto mt-10 grid max-w-2xl gap-3 text-left sm:grid-cols-3">
+          {["Hutan rusak", "Konflik satwa", "Ekonomi rapuh"].map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-[rgba(224,222,213,0.1)] bg-[rgba(224,222,213,0.04)] p-4 font-sans text-sm font-semibold uppercase tracking-[0.14em] text-[var(--color-neutral-400)]"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

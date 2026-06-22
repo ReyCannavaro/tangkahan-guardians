@@ -1,3 +1,27 @@
+export const heroSignals = [
+  "SDG 8: ekonomi lokal",
+  "SDG 15: hutan Leuser",
+  "No tourist riding",
+] as const;
+
+export const turnMilestones = [
+  {
+    year: "1980-1990an",
+    title: "Tekanan hutan meningkat",
+    copy: "Illegal logging dan pembukaan lahan menekan kawasan penyangga Leuser, sekaligus memperbesar konflik manusia-gajah.",
+  },
+  {
+    year: "April 2001",
+    title: "Komunitas memilih arah baru",
+    copy: "Masyarakat Namo Sialang dan Sei Serdang membangun tata kelola wisata berbasis konservasi melalui LPT.",
+  },
+  {
+    year: "Sekarang",
+    title: "Patroli dan wisata berjalan bersama",
+    copy: "CRU, mahout, pemandu, dan warga menjaga agar manfaat ekonomi tidak memutus kebutuhan hutan dan satwa.",
+  },
+] as const;
+
 export const cruCards = [
   {
     title: "Patroli Gajah Terpadu",
@@ -100,6 +124,13 @@ export const coexistencePillars = [
   },
 ] as const;
 
+export const communityOutcomes = [
+  "Pemandu lokal",
+  "Homestay dan eco-lodge",
+  "Patroli konservasi",
+  "Edukasi pengunjung",
+] as const;
+
 export const impactStats = [
   {
     label: "Pengunjung per tahun",
@@ -122,6 +153,12 @@ export const impactStats = [
     display: "2001",
     source: "April 2001: LPT dibentuk oleh masyarakat Namo Sialang dan Sei Serdang.",
   },
+] as const;
+
+export const impactPrinciples = [
+  "Angka dipakai sebagai estimasi naratif, bukan klaim final tanpa sumber primer.",
+  "Dampak ekonomi dibaca bersama dampak ekologis, bukan menggantikannya.",
+  "Setiap klaim final harus siap dijelaskan saat presentasi juri.",
 ] as const;
 
 export const learningPoints = [

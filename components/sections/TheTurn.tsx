@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap-config";
 import Sunrise from "@/components/illustrations/Sunrise";
+import { turnMilestones } from "@/lib/content";
 
 export default function TheTurn() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -67,6 +68,9 @@ export default function TheTurn() {
       </div>
 
       <div ref={textRef} className="relative z-10 max-w-4xl mx-auto text-center mt-[-10vh]">
+        <p className="mx-auto mb-5 w-fit rounded-full border border-[rgba(232,228,217,0.2)] bg-[rgba(13,31,22,0.18)] px-5 py-2 font-sans text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-amber-400)] backdrop-blur-sm">
+          April 2001
+        </p>
         <h2 className="font-display text-4xl lg:text-5xl mb-8 text-[var(--color-earth-100)] leading-tight">
           Sebuah Titik Balik
         </h2>
@@ -79,6 +83,29 @@ export default function TheTurn() {
         <p className="font-sans text-lg lg:text-xl text-[var(--color-neutral-200)] leading-relaxed">
           Gajah-gajah yang dulunya dianggap hama perusak kebun, kini direkrut menjadi patroli penjaga hutan bersama warga. Mantan penebang liar berevolusi menjadi pemandu wisata dan pelindung Leuser.
         </p>
+        <blockquote className="mx-auto mt-10 max-w-2xl border-l-4 border-[var(--color-amber-500)] pl-6 text-left font-display text-2xl italic leading-snug text-[var(--color-earth-100)]">
+          Transformasinya tidak terjadi karena hutan tiba-tiba aman. Ia terjadi
+          karena manusia memilih berhenti mengambil, lalu mulai menjaga.
+        </blockquote>
+      </div>
+
+      <div className="relative z-10 mx-auto mt-16 grid max-w-6xl gap-4 px-5 lg:grid-cols-3">
+        {turnMilestones.map((item) => (
+          <article
+            key={item.year}
+            className="rounded-3xl border border-[rgba(232,228,217,0.14)] bg-[rgba(13,31,22,0.16)] p-6 text-left backdrop-blur-sm"
+          >
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-amber-400)]">
+              {item.year}
+            </p>
+            <h3 className="mt-4 font-display text-2xl text-[var(--color-earth-100)]">
+              {item.title}
+            </h3>
+            <p className="mt-3 font-sans text-sm leading-relaxed text-[var(--color-neutral-200)]">
+              {item.copy}
+            </p>
+          </article>
+        ))}
       </div>
     </section>
   );
