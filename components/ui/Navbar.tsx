@@ -48,8 +48,7 @@ export default function Navbar() {
     // Set initial transparent state
     gsap.set(navbarRef.current, {
       backgroundColor: "transparent",
-      backdropFilter: "blur(0px)",
-      WebkitBackdropFilter: "blur(0px)",
+      "--navbar-blur": "0px",
       borderColor: "transparent",
       color: "var(--color-earth-100)"
     });
@@ -64,8 +63,7 @@ export default function Navbar() {
           gsap.to(navbarRef.current, {
             height: window.innerWidth < 640 ? "64px" : "72px",
             backgroundColor: "transparent",
-            backdropFilter: "blur(0px)",
-            WebkitBackdropFilter: "blur(0px)",
+            "--navbar-blur": "0px",
             borderColor: "transparent",
             color: "var(--color-earth-100)",
             boxShadow: "none",
@@ -122,8 +120,7 @@ export default function Navbar() {
       if (window.scrollY > 20) {
         gsap.to(navbarRef.current, {
           backgroundColor: bg,
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
+          "--navbar-blur": "16px",
           borderColor: "rgba(255, 255, 255, 0.08)",
           color: color,
           boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
@@ -142,7 +139,11 @@ export default function Navbar() {
     <nav 
       ref={navbarRef}
       className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] lg:w-[85%] max-w-[1200px] z-50 flex items-center px-5 lg:px-8 transition-colors border border-transparent rounded-full shadow-lg"
-      style={{ height: "72px" }}
+      style={{
+        height: "72px",
+        backdropFilter: "blur(var(--navbar-blur, 0px))",
+        WebkitBackdropFilter: "blur(var(--navbar-blur, 0px))",
+      }}
     >
       <div className="flex w-full items-center justify-between mx-auto">
         <Link
