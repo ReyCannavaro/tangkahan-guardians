@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-forest-950: #0D1F16;
+  --color-forest-900: #15291C;
+  --color-forest-800: #1B3A2B;
+  --color-forest-700: #2A4A35;
+  --color-forest-600: #3E5C44;
+  --color-forest-500: #547A5C;
+  --color-forest-400: #759C7E;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-earth-900: #3D2E1F;
+  --color-earth-700: #5C4530;
+  --color-earth-500: #8B6F4E;
+  --color-earth-300: #B8997A;
+  --color-earth-100: #E8E4D9;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-amber-600: #B8801F;
+  --color-amber-500: #D9A441;
+  --color-amber-400: #E5BC6C;
+  
+  --color-sunset-600: #A34D1F;
+  --color-sunset-500: #C2622D;
+
+  --color-neutral-50: #FAFAF8;
+  --color-neutral-200: #E0DED5;
+  --color-neutral-400: #9C988A;
+  --color-neutral-600: #5C5848;
+  --color-neutral-900: #1A1814;
+
+  --color-warning-amber: #C2622D;
+
+  --font-display: var(--font-fraunces), serif;
+  --font-sans: var(--font-plus-jakarta-sans), sans-serif;
+
+  /* Typography scale */
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 26px;
+  --text-lg: 20px;
+  --text-lg--line-height: 30px;
+  --text-xl: 25px;
+  --text-xl--line-height: 34px;
+  --text-2xl: 31px;
+  --text-2xl--line-height: 38px;
+  --text-3xl: 39px;
+  --text-3xl--line-height: 46px;
+  --text-4xl: 49px;
+  --text-4xl--line-height: 54px;
+  --text-5xl: 61px;
+  --text-5xl--line-height: 64px;
+  --text-6xl: 76px;
+  --text-6xl--line-height: 78px;
+  --text-7xl: 95px;
+  --text-7xl--line-height: 96px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-forest-800);
+  color: var(--color-earth-100);
+  font-family: var(--font-sans);
 }
