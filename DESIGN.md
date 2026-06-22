@@ -225,11 +225,11 @@ Gaya yang harus diikuti untuk custom icon ini:
 
 ---
 
-## 6. Navigasi — Navbar Gantung (Sticky, Frosted Glass)
+## 6. Navigasi — Floating Navbar (Sticky, Frosted Glass)
 
 ### 6.1 Konsep
 
-Navbar bersifat **fixed/sticky di posisi atas viewport**, dengan efek **frosted glass (background blur)** terinspirasi dari UI iOS (mirip Control Center atau Navigation Bar saat konten di-scroll di balik bar tersebut). Efek ini dicapai dengan `backdrop-filter: blur()`, bukan background solid biasa.
+Navbar bersifat **mengambang/floating di posisi atas viewport** (memiliki jarak/margin dari ujung layar atas, kiri, dan kanan), dengan bentuk membulat (border-radius penuh ala "pill" design) terinspirasi dari UI modern ala iOS yang mengambang. Menggunakan efek **frosted glass (background blur)** dengan `backdrop-filter: blur()`.
 
 ### 6.2 Perilaku Warna — Adaptif Sesuai Section
 
@@ -259,21 +259,25 @@ Ini permintaan spesifik yang harus diimplementasikan dengan presisi: **warna nav
 ```css
 /* Spesifikasi dasar navbar container */
 position: fixed;
-top: 0;
-left: 0;
-width: 100%;
+top: 16px; /* Jarak dari atas (mengambang) */
+left: 50%;
+transform: translateX(-50%);
+width: 92%; /* Lebar relatif */
+max-width: 1200px;
+border-radius: 9999px; /* Membulat penuh (pill) */
 height: 72px;        /* desktop */
 height: 64px;         /* mobile, breakpoint < 640px */
 z-index: 50;
 backdrop-filter: blur(16px);
 -webkit-backdrop-filter: blur(16px); /* Safari */
-border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* garis tipis pemisah, KUNCI untuk kesan iOS — jangan dihilangkan */
+border: 1px solid rgba(255, 255, 255, 0.08); /* Garis tepi halus keliling */
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Bayangan melayang */
 transition: background-color 0.4s ease;
 ```
 
 **Detail krusial yang sering terlewat saat mereplikasi efek iOS**:
-- Border bottom tipis (`1px solid rgba(255,255,255,0.08)`) WAJIB ada — ini elemen yang membuat efek frosted glass terasa "menempel di permukaan" alih-alih melayang datar.
-- Tambahkan subtle inner shadow di bagian bawah navbar (`box-shadow: 0 1px 20px rgba(0,0,0,0.1)`) untuk kedalaman tambahan.
+- Border tipis sekeliling (`1px solid rgba(255,255,255,0.08)`) WAJIB ada — ini elemen yang membuat efek frosted glass terasa "fisik" alih-alih transparan flat.
+- Tambahkan bayangan (box-shadow) agar jelas bahwa ia mengambang di atas konten.
 - Saat scroll ke bawah lebih dari `80px`, kurangi height navbar sedikit (dari 72px ke 60px) dengan transisi smooth — pola "navbar mengecil saat scroll" yang umum di iOS, menambah kesan dinamis tanpa berlebihan.
 
 ### 6.4 Struktur Konten Navbar

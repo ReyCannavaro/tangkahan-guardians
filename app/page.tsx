@@ -1,65 +1,87 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      {/* Hero */}
+      <section 
+        className="min-h-[120vh] pt-32 pb-24 px-5 flex flex-col items-center justify-center bg-[var(--color-forest-800)]"
+        data-navbar-theme="dark"
+        data-navbar-bg="rgba(13, 31, 22, 0.55)"
+        data-navbar-color="var(--color-earth-100)"
+      >
+        <h1 className="font-display text-5xl lg:text-7xl mb-6">Hero Section</h1>
+        <p>Scroll ke bawah untuk melihat transisi warna navbar.</p>
+      </section>
+
+      {/* The Wound */}
+      <section 
+        className="min-h-screen py-24 lg:py-40 px-5 flex flex-col items-center justify-center bg-[var(--color-forest-950)]"
+        data-navbar-theme="dark"
+        data-navbar-bg="rgba(8, 18, 13, 0.6)"
+        data-navbar-color="var(--color-neutral-200)"
+      >
+        <h2 className="font-display text-4xl lg:text-5xl mb-6 text-[var(--color-neutral-200)]">The Wound</h2>
+      </section>
+
+      {/* The Turn */}
+      <section 
+        className="min-h-[150vh] py-32 lg:py-48 px-5 flex flex-col items-center justify-center"
+        style={{ background: "linear-gradient(to bottom, var(--color-forest-950), var(--color-sunset-600))" }}
+        data-navbar-theme="dark"
+        data-navbar-bg="rgba(90, 45, 20, 0.5)"
+        data-navbar-color="var(--color-earth-100)"
+      >
+        <h2 className="font-display text-4xl lg:text-5xl mb-6 text-[var(--color-earth-100)]">The Turn</h2>
+      </section>
+
+      {/* CRU System */}
+      <section 
+        className="min-h-screen py-24 lg:py-40 px-5 flex flex-col items-center justify-center bg-[var(--color-forest-700)]"
+        data-navbar-theme="dark"
+        data-navbar-bg="rgba(27, 58, 43, 0.55)"
+        data-navbar-color="var(--color-earth-100)"
+      >
+        <h2 className="font-display text-4xl lg:text-5xl mb-6 text-[var(--color-earth-100)]">CRU System</h2>
+      </section>
+
+      {/* Coexistence */}
+      <section 
+        className="min-h-screen py-24 lg:py-40 px-5 flex flex-col items-center justify-center bg-[var(--color-earth-100)] text-[var(--color-neutral-900)]"
+        data-navbar-theme="light"
+        data-navbar-bg="rgba(232, 228, 217, 0.65)"
+        data-navbar-color="var(--color-neutral-900)"
+      >
+        <h2 className="font-display text-4xl lg:text-5xl mb-6">Coexistence</h2>
+      </section>
+
+      {/* Impact Stats */}
+      <section 
+        className="min-h-[80vh] py-24 lg:py-40 px-5 flex flex-col items-center justify-center bg-[var(--color-neutral-50)] text-[var(--color-neutral-900)]"
+        data-navbar-theme="light"
+        data-navbar-bg="rgba(250, 250, 248, 0.7)"
+        data-navbar-color="var(--color-neutral-900)"
+      >
+        <h2 className="font-display text-4xl lg:text-5xl mb-6">Impact Stats</h2>
+      </section>
+
+      {/* Still Learning */}
+      <section 
+        className="min-h-screen py-24 lg:py-40 px-5 flex flex-col items-center justify-center bg-[var(--color-earth-900)]"
+        data-navbar-theme="dark"
+        data-navbar-bg="rgba(61, 46, 31, 0.6)"
+        data-navbar-color="var(--color-earth-100)"
+      >
+        <h2 className="font-display text-4xl lg:text-5xl mb-6 text-[var(--color-earth-100)]">Still Learning</h2>
+      </section>
+
+      {/* Footer */}
+      <section 
+        className="min-h-[50vh] py-12 px-5 flex flex-col items-center justify-center bg-[var(--color-neutral-900)] text-[var(--color-neutral-400)]"
+        data-navbar-theme="dark"
+        data-navbar-bg="rgba(26, 24, 20, 0.8)"
+        data-navbar-color="var(--color-neutral-400)"
+      >
+        <p>Footer Content</p>
+      </section>
+    </main>
   );
 }
