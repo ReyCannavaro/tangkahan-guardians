@@ -17,7 +17,24 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Tangkahan: Guardians of the Leuser",
-  description: "Landing page untuk subtema Eco Journey: Sustainable Tourism Experience (SDG 8 & 15)",
+  description:
+    "Interactive static landing page about Tangkahan, community ecotourism, CRU elephant patrols, and Leuser forest conservation.",
+  keywords: [
+    "Tangkahan",
+    "Leuser",
+    "ecotourism",
+    "SDG 8",
+    "SDG 15",
+    "Conservation Response Unit",
+    "Sumatran elephant",
+  ],
+  openGraph: {
+    title: "Tangkahan: Guardians of the Leuser",
+    description:
+      "A scroll-driven story about Tangkahan's community-led conservation journey.",
+    type: "website",
+    locale: "id_ID",
+  },
 };
 
 export default function RootLayout({

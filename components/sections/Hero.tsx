@@ -7,6 +7,7 @@ import HeroCanopy from "@/components/illustrations/HeroCanopy";
 import HeroTrees from "@/components/illustrations/HeroTrees";
 import HeroBushes from "@/components/illustrations/HeroBushes";
 import { heroSignals } from "@/lib/content";
+import LeuserMark from "@/components/illustrations/LeuserMark";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -103,6 +104,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-30 flex flex-col items-center text-center px-5 max-w-4xl mx-auto mt-[-5vh]">
+        <LeuserMark className="mb-5 h-24 w-24 text-[var(--color-earth-100)] opacity-80" />
         <div className="mb-6 flex flex-wrap justify-center gap-2">
           {heroSignals.map((signal) => (
             <span

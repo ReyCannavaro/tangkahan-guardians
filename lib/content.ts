@@ -133,18 +133,18 @@ export const communityOutcomes = [
 
 export const impactStats = [
   {
-    label: "Pengunjung per tahun",
-    value: 41740,
-    suffix: "",
-    display: "41.740",
-    source: "Estimasi 2023: 31.200 lokal dan 10.540 asing. Perlu verifikasi final sebelum publikasi.",
+    label: "Estimasi pengunjung per tahun",
+    value: 41,
+    suffix: " rb",
+    display: "±41 rb",
+    source: "Rangka riset internal 2023. Angka final harus diverifikasi ke sumber primer sebelum presentasi.",
   },
   {
-    label: "Nilai ekonomi wisata",
+    label: "Estimasi nilai ekonomi wisata",
     value: 72,
-    suffix: " M",
-    display: "Rp 72 M",
-    source: "Estimasi Travel Cost Method, riset 2022. Angka disajikan sebagai estimasi, bukan klaim absolut.",
+    suffix: "",
+    display: "±Rp72 M",
+    source: "Estimasi berbasis Travel Cost Method dalam riset awal. Disajikan sebagai konteks, bukan klaim absolut.",
   },
   {
     label: "Titik balik komunitas",

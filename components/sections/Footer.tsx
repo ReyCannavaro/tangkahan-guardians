@@ -1,4 +1,5 @@
 import { contentSources } from "@/lib/content";
+import LeuserMark from "@/components/illustrations/LeuserMark";
 
 export default function Footer() {
   return (
@@ -10,6 +11,7 @@ export default function Footer() {
     >
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_1.4fr]">
         <div>
+          <LeuserMark className="mb-4 h-16 w-16 text-[var(--color-earth-100)]" />
           <p className="font-display text-2xl text-[var(--color-earth-100)]">
             TANGKAHAN
           </p>
